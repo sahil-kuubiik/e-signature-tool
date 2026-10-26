@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SignatureCraft – Email Signature Generator</title>
+  <meta name="description" content="Create professional email signatures with logo, address, phone numbers and website." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=1.2" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="app-header">
+    <div class="header-brand">
+      <div class="brand-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <span class="brand-name">SignatureCraft</span>
+    </div>
+    <span class="header-hint">Build your professional email signature in seconds</span>
+  </header>
+
+  <!-- MAIN -->
+  <div class="app-layout">
+
+    <!-- ══════════════ LEFT PANEL ══════════════ -->
+    <aside class="left-panel">
+
+      <!-- STEP 1: Layout -->
+      <section class="panel-section">
+        <div class="section-header">
+          <span class="step-num">1</span>
+          <div>
+            <h2 class="section-title">Choose Layout</h2>
+            <p class="section-sub">Pick one of the 3 signature styles</p>
+          </div>
+        </div>
+        <div class="layout-grid" id="layoutGrid">
+          <!-- injected by JS -->
+        </div>
+      </section>
+
+      <!-- STEP 2: Color -->
+      <section class="panel-section">
+        <div class="section-header">
+          <span class="step-num">2</span>
+          <div>
+            <h2 class="section-title">Brand Color</h2>
+            <p class="section-sub">Select your accent color</p>
+          </div>
+        </div>
+        <div class="color-palette">
+          <button class="swatch active" data-color="#0d9488" style="background:#0d9488" title="Teal"></button>
+          <button class="swatch" data-color="#1e40af" style="background:#1e40af" title="Navy"></button>
+          <button class="swatch" data-color="#2563eb" style="background:#2563eb" title="Blue"></button>
+          <button class="swatch" data-color="#0ea5e9" style="background:#0ea5e9" title="Sky"></button>
+          <button class="swatch" data-color="#6366f1" style="background:#6366f1" title="Indigo"></button>
+          <button class="swatch" data-color="#8b5cf6" style="background:#8b5cf6" title="Violet"></button>
+          <button class="swatch" data-color="#ef4444" style="background:#ef4444" title="Red"></button>
+          <button class="swatch" data-color="#f59e0b" style="background:#f59e0b" title="Amber"></button>
+          <button class="swatch" data-color="#1e293b" style="background:#1e293b" title="Dark"></button>
+          <label class="swatch swatch-custom" title="Custom color">
+            <input type="color" id="customColor" value="#0d9488" />
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5" fill="white"/><circle cx="17.5" cy="10.5" r=".5" fill="white"/><circle cx="8.5" cy="7.5" r=".5" fill="white"/><circle cx="6.5" cy="12.5" r=".5" fill="white"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+          </label>
+        </div>
+      </section>
+
+      <!-- STEP 3: Details -->
+      <section class="panel-section">
+        <div class="section-header">
+          <span class="step-num">3</span>
+          <div>
+            <h2 class="section-title">Your Details</h2>
+            <p class="section-sub">Fill in your information</p>
+          </div>
+        </div>
+
+        <div class="fields">
+
+          <!-- Name -->
+          <div class="field-group">
+            <label class="field-label" for="fName">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Full Name
+            </label>
+            <input class="field-input" type="text" id="fName" placeholder="e.g. Natcho Angelo" />
+          </div>
+
+          <!-- Job Title -->
+          <div class="field-group">
+            <label class="field-label" for="fTitle">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              Job Title
+            </label>
+            <input class="field-input" type="text" id="fTitle" placeholder="e.g. CEO & Co-Founder" />
+          </div>
+
+          <!-- Company -->
+          <div class="field-group full-width">
+            <label class="field-label" for="fCompany">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Company Name
+            </label>
+            <input class="field-input" type="text" id="fCompany" placeholder="e.g. kuubik" />
+          </div>
+
+          <!-- Company Tagline / Subtitle -->
+          <div class="field-group full-width">
+            <label class="field-label" for="fTagline">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="14" y2="15"/></svg>
+              Company Tagline / Subtitle
+              <span class="label-hint">(Shown under logo)</span>
+            </label>
+            <input class="field-input" type="text" id="fTagline" placeholder="e.g. A Global Consulting Agency" />
+          </div>
+
+          <!-- Address -->
+          <div class="field-group full-width">
+            <label class="field-label" for="fAddress">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Office Address
+            </label>
+            <input class="field-input" type="text" id="fAddress" placeholder="e.g. 2 Changi North Street, Singapore 498828" />
+          </div>
+
+          <!-- Email Address -->
+          <div class="field-group full-width">
+            <label class="field-label" for="fEmail">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Email Address
+            </label>
+            <input class="field-input" type="email" id="fEmail" placeholder="e.g. name@company.com" />
+          </div>
+
+          <!-- Company Website -->
+          <div class="field-group full-width">
+            <label class="field-label" for="fWebsite">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Company Website URL
+            </label>
+            <input class="field-input" type="url" id="fWebsite" placeholder="e.g. www.kuubik.com" />
+          </div>
+
+          <!-- Meeting / Discovery Call Link -->
+          <div class="field-group full-width">
+            <label class="field-label" for="fCtaText">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Discovery Call / Meeting Link
+              <span class="label-hint">(Optional CTA)</span>
+            </label>
+            <div class="cta-input-group">
+              <input class="field-input" type="text" id="fCtaText" placeholder="Text: e.g. Book a Discovery Call" />
+              <input class="field-input" type="url" id="fCtaUrl" placeholder="URL: e.g. https://calendly.com/your-call" />
+            </div>
+          </div>
+
+          <!-- Phone Numbers -->
+          <div class="field-group full-width phone-section">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <label class="field-label" style="margin-bottom:0;display:flex;align-items:center;gap:6px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Phone & Contact Details
+              </label>
+              <!-- Phone Display Style: Short Text (T, P, M) vs Icons -->
+              <div class="phone-style-toggle" style="display:inline-flex;background:#f1f5f9;padding:2px;border-radius:6px;gap:2px;border:1px solid #e2e8f0;">
+                <button type="button" class="phone-style-btn active" id="btnPhoneStyleText" onclick="setPhoneStyle('text')" style="padding:4px 10px;font-size:11px;font-weight:600;border:none;border-radius:4px;cursor:pointer;background:white;color:#0f172a;box-shadow:0 1px 2px rgba(0,0,0,0.06);">
+                  Text (T, P, M)
+                </button>
+                <button type="button" class="phone-style-btn" id="btnPhoneStyleIcon" onclick="setPhoneStyle('icon')" style="padding:4px 10px;font-size:11px;font-weight:500;border:none;border-radius:4px;cursor:pointer;background:transparent;color:#64748b;">
+                  Icons
+                </button>
+              </div>
+            </div>
+            <div id="phoneList" class="phone-list">
+              <div class="phone-row" id="phone-row-0">
+                <select class="phone-type" id="phoneType0">
+                  <option value="W" selected>W (WhatsApp)</option>
+                  <option value="T">T (Tel)</option>
+                </select>
+                <input class="field-input phone-num" type="tel" id="phoneNum0" placeholder="+61 433 335 507" />
+                <button class="btn-del-phone" id="delPhone0" onclick="removePhone(0)" style="display:none" title="Remove">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+            </div>
+            <button class="btn-add-phone" id="addPhoneBtn" onclick="addPhone()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Another Number
+            </button>
+          </div>
+
+          <!-- Profile Photo / Headshot Section with Toggle -->
+          <div class="field-group full-width">
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <span class="toggle-title">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  Use Profile Photo / Avatar
+                </span>
+                <span class="toggle-desc">Show photo on left in selected layout</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="togglePhoto" checked onchange="togglePhotoHandler()" />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <!-- Profile Photo Upload Box (collapsible) -->
+            <div id="photoSectionWrap" class="toggle-content">
+              <div class="logo-mode-tabs">
+                <button type="button" class="logo-tab active" id="tabAvatarUrl" onclick="switchAvatarMode('url')">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  Image URL
+                </button>
+                <button type="button" class="logo-tab" id="tabAvatarUpload" onclick="switchAvatarMode('upload')">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  Upload File
+                </button>
+              </div>
+
+              <!-- Avatar URL -->
+              <div id="avatarUrlPane" class="logo-pane">
+                <input class="field-input" type="url" id="fAvatarUrl" placeholder="https://example.com/photo.jpg" />
+                <small class="field-hint">Direct URL to your profile photo or headshot image.</small>
+              </div>
+
+              <!-- Avatar Upload -->
+              <div id="avatarUploadPane" class="logo-pane" style="display:none">
+                <div class="logo-zone" id="avatarZone" onclick="document.getElementById('avatarFile').click()">
+                  <input type="file" id="avatarFile" accept="image/*" style="display:none" onchange="handleAvatar(event)" />
+                  <div id="avatarEmpty" class="logo-empty">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a6 6 0 0 1 12 0v2"/></svg>
+                    <span>Click or drag to upload headshot</span>
+                    <small>Auto-compressed for email clients</small>
+                  </div>
+                  <div id="avatarFilled" class="logo-filled" style="display:none">
+                    <img id="avatarPreview" src="" alt="Avatar" style="width:48px;height:48px;border-radius:50%;object-fit:cover;" />
+                    <button type="button" class="btn-del-logo" onclick="removeAvatar(event)" title="Remove avatar">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Logo Section with Toggle -->
+          <div class="field-group full-width">
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <span class="toggle-title">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  Company Logo at Bottom
+                </span>
+                <span class="toggle-desc">Show company logo & tagline at the bottom</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="toggleBottomLogo" checked onchange="toggleBottomLogoHandler()" />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <!-- Company Logo Upload Box (collapsible) -->
+            <div id="logoSectionWrap" class="toggle-content">
+              <div class="logo-mode-tabs">
+                <button type="button" class="logo-tab active" id="tabLogoUrl" onclick="switchLogoMode('url')">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  Image URL (Recommended)
+                </button>
+                <button type="button" class="logo-tab" id="tabLogoUpload" onclick="switchLogoMode('upload')">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  Upload File
+                </button>
+              </div>
+
+              <!-- Tab 1: Logo URL -->
+              <div id="logoUrlPane" class="logo-pane">
+                <input class="field-input" type="url" id="fLogoUrl" placeholder="https://www.canford.au/wp-content/uploads/2026/10/Canford_logo_Kuubiik_high_resolution_transparent_min_388px.png" />
+                <small class="field-hint">Tip: Right-click your company logo on your website and click <strong>"Copy image address"</strong>, then paste here.</small>
+              </div>
+
+              <!-- Tab 2: File Upload (Auto-compressed) -->
+              <div id="logoUploadPane" class="logo-pane" style="display:none">
+                <div class="logo-zone" id="logoZone" onclick="document.getElementById('logoFile').click()">
+                  <input type="file" id="logoFile" accept="image/*" style="display:none" onchange="handleLogo(event)" />
+                  <div id="logoEmpty" class="logo-empty">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    <span>Click or drag to upload logo</span>
+                    <small>Auto-compressed for Gmail under 10k limit</small>
+                  </div>
+                  <div id="logoFilled" class="logo-filled" style="display:none">
+                    <img id="logoPreview" src="" alt="Logo" />
+                    <button type="button" class="btn-del-logo" onclick="removeLogo(event)" title="Remove logo">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="apple-mail-alert" id="base64AppleMailAlert">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;margin-top:2px;"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.63 1.35-.57.65-1.06 1.72-.93 2.74 1 .08 2.02-.49 2.64-1.24z"/></svg>
+                  <div>
+                    <strong>For Apple Mail & iPhone:</strong> Apple Mail blocks uploaded (Base64) images sent via Gmail. If your recipients use Apple Mail, switch to the <strong>Image URL</strong> tab and paste your website logo link so it always displays.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Logo Size Adjustment Slider -->
+              <div class="field-group" style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                  <label class="field-label" style="margin-bottom:0;display:flex;align-items:center;gap:6px;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    Logo Size
+                  </label>
+                  <span id="logoSizeVal" style="font-size:12px;font-weight:600;color:var(--accent);">135px</span>
+                </div>
+                <input type="range" id="fLogoSize" min="70" max="220" value="135" class="slider-input" oninput="updateLogoSize(this.value)" />
+                <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-muted);margin-top:3px;">
+                  <span>Small (70px)</span>
+                  <span>Standard (135px)</span>
+                  <span>Large (220px)</span>
+                </div>
+              </div>
+
+              <!-- Logo Background Badge (Essential for White Logos on White Email Backgrounds) -->
+              <div class="field-group" style="margin-top:12px;padding-top:10px;border-top:1px dashed var(--border);">
+                <label class="field-label" style="margin-bottom:6px;display:flex;align-items:center;gap:6px;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+                  Logo Background Badge
+                  <span class="label-hint" style="color:var(--accent);font-weight:600;">(Fix for white logos on white background!)</span>
+                </label>
+                <div class="logo-bg-options">
+                  <button type="button" class="logo-bg-btn active" id="bgBtnNone" onclick="setLogoBgStyle('none')">Transparent</button>
+                  <button type="button" class="logo-bg-btn" id="bgBtnDark" onclick="setLogoBgStyle('dark')" title="Adds dark badge so white logos are visible">Dark Badge (For White Logos)</button>
+                  <button type="button" class="logo-bg-btn" id="bgBtnBrand" onclick="setLogoBgStyle('brand')" title="Brand color badge">Brand Color</button>
+                  <button type="button" class="logo-bg-btn" id="bgBtnWhite" onclick="setLogoBgStyle('white')" title="White badge for dark mode">White Box</button>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </aside>
+
+    <!-- ══════════════ RIGHT PANEL ══════════════ -->
+    <main class="right-panel">
+
+      <!-- Live Preview -->
+      <div class="preview-card">
+        <div class="pcard-header">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div class="mac-dots"><span></span><span></span><span></span></div>
+            <span class="pcard-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Live Email Preview
+            </span>
+          </div>
+          <div class="pcard-actions">
+            <button class="action-btn btn-outline" onclick="toggleDirectEdit()" id="btnDirectEdit" title="Click text directly in the preview to edit">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              Direct Edit
+            </button>
+            <button class="action-btn btn-teal" onclick="copySignatureOneClick()" id="btnTopCopy" title="Copy formatted signature for Gmail">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy for Gmail
+            </button>
+            <button class="action-btn btn-dark" onclick="copyForAppleMail()" id="btnTopAppleCopy" title="Copy formatted signature for Apple Mail">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.63 1.35-.57.65-1.06 1.72-.93 2.74 1 .08 2.02-.49 2.64-1.24z"/></svg>
+              Copy for Apple Mail
+            </button>
+            <button class="action-btn btn-light" onclick="copyLogoImageOnly()" id="btnTopLogoOnly" title="Copy image directly to paste into Apple Mail box">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              Copy Logo Image
+            </button>
+            <button class="btn-refresh" onclick="generatePreview(true)" title="Refresh Preview">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <!-- Email wrapper -->
+          <div class="email-wrap">
+            <div class="email-header">
+              <div class="email-from">
+                <div class="email-avatar" id="emailAvatar">?</div>
+                <div>
+                  <div class="email-sender" id="emailSender">Your Name</div>
+                  <div class="email-addr" id="emailAddr">your@email.com</div>
+                </div>
+              </div>
+              <div class="email-time">Today, 2:41 PM</div>
+            </div>
+            <div class="email-subject">Re: Project Update – Q4 Review</div>
+            <div class="email-body">
+              <p>Hi there,</p>
+              <p>Thanks for reaching out! Please find the details below.</p>
+              <p>Best regards,</p>
+            </div>
+            <!-- SIGNATURE RENDERS HERE -->
+            <div class="sig-preview-wrap" id="sigPreview">
+              <div class="sig-empty">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.25"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <p>Fill in your details to preview your signature</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Generated & Editable HTML Code -->
+      <div class="code-card">
+        <div class="ccard-header">
+          <div class="ccard-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            HTML Signature Code
+            <span class="size-badge safe" id="sizeBadge">0 / 10,000 chars (Gmail Safe)</span>
+            <span class="custom-badge" id="customBadge" style="display:none;background:#fef3c7;color:#92400e;border:1px solid #fde68a;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:12px;">Custom Edits Active</span>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <button class="action-btn btn-teal" id="btnApplyHtml" onclick="applyCustomHtml()" title="Apply edited HTML directly to preview">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Apply to Preview
+            </button>
+            <button class="action-btn btn-outline" id="btnResetHtml" onclick="resetHtmlToGenerated()" style="display:none;" title="Reset back to form-generated HTML">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+              Reset to Form
+            </button>
+            <button class="action-btn btn-light" id="copyBtn" onclick="copyCode()" title="Copy HTML code">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy HTML
+            </button>
+          </div>
+        </div>
+        <textarea class="code-editor" id="codeEditor" spellcheck="false" placeholder="Edit or paste your HTML signature code here..."><!-- Fill in your details to generate the HTML code --></textarea>
+        <div style="display:none;" id="codeBlock"><code id="codeText"></code></div>
+      </div>
+
+      <!-- ── USE IN EMAIL CLIENT ── -->
+      <div class="client-card">
+        <div class="client-card-title">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Export & Copy for Email Clients
+        </div>
+        <div class="client-buttons">
+          <button class="client-btn primary-copy" onclick="copySignatureOneClick()" id="btnOneClickCopy">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy for Gmail
+          </button>
+          <button class="client-btn apple" onclick="copyForAppleMail()" id="btnAppleCopy">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.63 1.35-.57.65-1.06 1.72-.93 2.74 1 .08 2.02-.49 2.64-1.24z"/></svg>
+            Copy for Apple Mail
+          </button>
+          <button class="client-btn" onclick="copyLogoImageOnly()" id="btnCopyLogoOnly" title="Copy raw image to paste into Apple Mail signature box">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Copy Logo Image
+          </button>
+          <button class="client-btn help-btn" onclick="openClientGuide('apple')" id="btnApple">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Apple Mail Guide
+          </button>
+          <button class="client-btn preview" onclick="openRenderedPreview()" id="btnPreview">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Open in Tab
+          </button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ═══ GUIDE MODAL ═══ -->
+  <div class="modal-overlay" id="guideModal" onclick="closeModal(event)">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" onclick="document.getElementById('guideModal').classList.remove('open')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
