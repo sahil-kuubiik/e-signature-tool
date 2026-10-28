@@ -29,53 +29,15 @@
     <!-- ══════════════ LEFT PANEL ══════════════ -->
     <aside class="left-panel">
 
-      <!-- STEP 1: Layout -->
+      <!-- Your Details Section -->
       <section class="panel-section">
         <div class="section-header">
-          <span class="step-num">1</span>
-          <div>
-            <h2 class="section-title">Choose Layout</h2>
-            <p class="section-sub">Pick one of the 3 signature styles</p>
+          <div style="width:28px;height:28px;border-radius:8px;background:#f0fdfa;color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </div>
-        </div>
-        <div class="layout-grid" id="layoutGrid">
-          <!-- injected by JS -->
-        </div>
-      </section>
-
-      <!-- STEP 2: Color -->
-      <section class="panel-section">
-        <div class="section-header">
-          <span class="step-num">2</span>
           <div>
-            <h2 class="section-title">Brand Color</h2>
-            <p class="section-sub">Select your accent color</p>
-          </div>
-        </div>
-        <div class="color-palette">
-          <button class="swatch active" data-color="#0d9488" style="background:#0d9488" title="Teal"></button>
-          <button class="swatch" data-color="#1e40af" style="background:#1e40af" title="Navy"></button>
-          <button class="swatch" data-color="#2563eb" style="background:#2563eb" title="Blue"></button>
-          <button class="swatch" data-color="#0ea5e9" style="background:#0ea5e9" title="Sky"></button>
-          <button class="swatch" data-color="#6366f1" style="background:#6366f1" title="Indigo"></button>
-          <button class="swatch" data-color="#8b5cf6" style="background:#8b5cf6" title="Violet"></button>
-          <button class="swatch" data-color="#ef4444" style="background:#ef4444" title="Red"></button>
-          <button class="swatch" data-color="#f59e0b" style="background:#f59e0b" title="Amber"></button>
-          <button class="swatch" data-color="#1e293b" style="background:#1e293b" title="Dark"></button>
-          <label class="swatch swatch-custom" title="Custom color">
-            <input type="color" id="customColor" value="#0d9488" />
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5" fill="white"/><circle cx="17.5" cy="10.5" r=".5" fill="white"/><circle cx="8.5" cy="7.5" r=".5" fill="white"/><circle cx="6.5" cy="12.5" r=".5" fill="white"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
-          </label>
-        </div>
-      </section>
-
-      <!-- STEP 3: Details -->
-      <section class="panel-section">
-        <div class="section-header">
-          <span class="step-num">3</span>
-          <div>
-            <h2 class="section-title">Your Details</h2>
-            <p class="section-sub">Fill in your information</p>
+            <h2 class="section-title">Your Details &amp; Contact Info</h2>
+            <p class="section-sub">Fill in your information to generate your signature</p>
           </div>
         </div>
 
@@ -160,21 +122,10 @@
 
           <!-- Phone Numbers -->
           <div class="field-group full-width phone-section">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-              <label class="field-label" style="margin-bottom:0;display:flex;align-items:center;gap:6px;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                Phone & Contact Details
-              </label>
-              <!-- Phone Display Style: Short Text (T, P, M) vs Icons -->
-              <div class="phone-style-toggle" style="display:inline-flex;background:#f1f5f9;padding:2px;border-radius:6px;gap:2px;border:1px solid #e2e8f0;">
-                <button type="button" class="phone-style-btn active" id="btnPhoneStyleText" onclick="setPhoneStyle('text')" style="padding:4px 10px;font-size:11px;font-weight:600;border:none;border-radius:4px;cursor:pointer;background:white;color:#0f172a;box-shadow:0 1px 2px rgba(0,0,0,0.06);">
-                  Text (T, P, M)
-                </button>
-                <button type="button" class="phone-style-btn" id="btnPhoneStyleIcon" onclick="setPhoneStyle('icon')" style="padding:4px 10px;font-size:11px;font-weight:500;border:none;border-radius:4px;cursor:pointer;background:transparent;color:#64748b;">
-                  Icons
-                </button>
-              </div>
-            </div>
+            <label class="field-label" style="display:flex;align-items:center;gap:6px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Phone & Contact Details
+            </label>
             <div id="phoneList" class="phone-list">
               <div class="phone-row" id="phone-row-0">
                 <select class="phone-type" id="phoneType0">
@@ -201,7 +152,7 @@
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                   Use Profile Photo / Avatar
                 </span>
-                <span class="toggle-desc">Show photo on left in selected layout</span>
+                <span class="toggle-desc">Show photo on left</span>
               </div>
               <label class="toggle-switch">
                 <input type="checkbox" id="togglePhoto" checked onchange="togglePhotoHandler()" />
@@ -254,9 +205,9 @@
               <div class="toggle-info">
                 <span class="toggle-title">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                  Company Logo at Bottom
+                  Company Logo (Right Side)
                 </span>
-                <span class="toggle-desc">Show company logo & tagline at the bottom</span>
+                <span class="toggle-desc">Show company logo & tagline on the right</span>
               </div>
               <label class="toggle-switch">
                 <input type="checkbox" id="toggleBottomLogo" checked onchange="toggleBottomLogoHandler()" />

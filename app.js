@@ -16,7 +16,7 @@ const DEFAULT_STATE = {
   email: '',
   website: 'www.canford.au',
   ctaText: '',
-  phoneStyle: 'text',
+  phoneStyle: 'icon',
   phones: [
     { type: 'W', number: '+61 433 335 507' },
     { type: 'T', number: '+61 7 5538 8788' }
@@ -69,73 +69,22 @@ function loadState() {
       state.logoRatio = 3.0;
       state.logoDarkModeFix = false;
       state.logoBgStyle = 'none';
+      state.phoneStyle = 'icon';
+      state.layout = 4;
+      state.color = '#0d9488';
     }
   } catch (_) { }
 }
 
-// ─── Layout metadata (3 Distinct Subtle Layouts) ────────────────────────────
+// ─── Layout metadata (Executive Row Layout) ──────────────────────────────────
 const LAYOUTS = [
-  { id: 1, name: 'Classic Square', desc: 'Square photo · Subtle divider · Clean corporate' },
-  { id: 2, name: 'Modern Circle', desc: 'Circular avatar · Role badge · Elegant' },
-  { id: 3, name: 'Subtle Minimal', desc: 'Soft rounded photo · Left accent line · Modern' },
   { id: 4, name: 'Executive Row', desc: 'Photo left · Details center · Company logo right' },
 ];
 
-// ─── SVG thumbnails for each layout ──────────────────────────────────────────
+// ─── SVG thumbnail for Executive Row layout ──────────────────────────────────
 function thumbSvg(id, color) {
   const c = color;
-  const thumbs = {
-    // 1: Classic Square – Square logo left | divider | details right
-    1: `<svg viewBox="0 0 82 52" xmlns="http://www.w3.org/2000/svg">
-  <rect width="82" height="52" fill="#f8fafc" rx="4"/>
-  <rect x="5" y="10" width="20" height="20" rx="3" fill="#e2e8f0"/>
-  <rect x="8" y="13" width="14" height="14" rx="2" fill="${c}" opacity="0.6"/>
-  <rect x="29" y="8" width="1" height="36" rx="0.5" fill="#cbd5e1"/>
-  <rect x="34" y="9" width="30" height="4" rx="1.5" fill="#1e293b"/>
-  <rect x="34" y="15" width="22" height="2" rx="1" fill="#94a3b8"/>
-  <rect x="34" y="20" width="38" height="2" rx="1" fill="#94a3b8"/>
-  <rect x="34" y="26" width="6" height="2" rx="1" fill="#64748b"/>
-  <rect x="42" y="26" width="24" height="2" rx="1" fill="${c}"/>
-  <rect x="34" y="31" width="6" height="2" rx="1" fill="#64748b"/>
-  <rect x="42" y="31" width="24" height="2" rx="1" fill="${c}"/>
-  <rect x="34" y="37" width="28" height="2" rx="1" fill="${c}"/>
-</svg>`,
-
-    // 2: Modern Circle – Circular avatar with border | divider | Name + Badge + details
-    2: `<svg viewBox="0 0 82 52" xmlns="http://www.w3.org/2000/svg">
-  <rect width="82" height="52" fill="#f8fafc" rx="4"/>
-  <circle cx="15" cy="21" r="11" fill="#e2e8f0"/>
-  <circle cx="15" cy="21" r="10" fill="none" stroke="${c}" stroke-width="1.5"/>
-  <circle cx="15" cy="21" r="6" fill="${c}" opacity="0.5"/>
-  <rect x="29" y="8" width="1" height="36" rx="0.5" fill="#cbd5e1"/>
-  <rect x="34" y="9" width="26" height="4" rx="1.5" fill="#0f172a"/>
-  <rect x="34" y="15" width="18" height="3.5" rx="1.75" fill="${c}" opacity="0.25"/>
-  <rect x="34" y="21" width="30" height="2" rx="1" fill="#334155"/>
-  <rect x="34" y="26" width="38" height="2" rx="1" fill="#94a3b8"/>
-  <rect x="34" y="31" width="6" height="2" rx="1" fill="#64748b"/>
-  <rect x="42" y="31" width="24" height="2" rx="1" fill="${c}"/>
-  <rect x="34" y="37" width="28" height="2" rx="1" fill="${c}"/>
-</svg>`,
-
-    // 3: Subtle Minimal – Left color bar | soft rounded logo | divider | details
-    3: `<svg viewBox="0 0 82 52" xmlns="http://www.w3.org/2000/svg">
-  <rect width="82" height="52" fill="#f8fafc" rx="4"/>
-  <rect x="2" y="7" width="3" height="38" rx="1.5" fill="${c}"/>
-  <rect x="8" y="10" width="18" height="18" rx="5" fill="#e2e8f0"/>
-  <rect x="11" y="13" width="12" height="12" rx="3" fill="${c}" opacity="0.5"/>
-  <rect x="29" y="8" width="1" height="36" rx="0.5" fill="#cbd5e1"/>
-  <rect x="34" y="9" width="30" height="4" rx="1.5" fill="#1e293b"/>
-  <rect x="34" y="15" width="22" height="2" rx="1" fill="#94a3b8"/>
-  <rect x="34" y="20" width="38" height="2" rx="1" fill="#94a3b8"/>
-  <rect x="34" y="26" width="6" height="2" rx="1" fill="#64748b"/>
-  <rect x="42" y="26" width="24" height="2" rx="1" fill="${c}"/>
-  <rect x="34" y="31" width="6" height="2" rx="1" fill="#64748b"/>
-  <rect x="42" y="31" width="24" height="2" rx="1" fill="${c}"/>
-  <rect x="34" y="37" width="28" height="2" rx="1" fill="${c}"/>
-</svg>`,
-
-    // 4: Executive Row – Photo left | divider | details center | divider | company logo right
-    4: `<svg viewBox="0 0 82 52" xmlns="http://www.w3.org/2000/svg">
+  return `<svg viewBox="0 0 82 52" xmlns="http://www.w3.org/2000/svg">
   <rect width="82" height="52" fill="#f8fafc" rx="4"/>
   <circle cx="12" cy="26" r="8" fill="#e2e8f0"/>
   <circle cx="12" cy="26" r="7" fill="none" stroke="${c}" stroke-width="1.2"/>
@@ -150,9 +99,7 @@ function thumbSvg(id, color) {
   <rect x="59" y="18" width="18" height="10" rx="2" fill="#e2e8f0"/>
   <rect x="61" y="21" width="14" height="4" rx="1" fill="${c}" opacity="0.8"/>
   <rect x="60" y="31" width="16" height="2" rx="0.8" fill="#94a3b8"/>
-</svg>`,
-  };
-  return thumbs[id] || '';
+</svg>`;
 }
 
 // ─── Init ─────────────────────────────────────────────────────────────────────
@@ -224,18 +171,19 @@ function syncStateToUI() {
     bindPhoneRow(0);
   }
 
-  setPhoneStyle(state.phoneStyle || 'text');
   setLogoBgStyle(state.logoBgStyle || 'none');
   selectLayout(state.layout || 4);
 }
 
-// ─── Layout Cards ─────────────────────────────────────────────────────────────
+// ─── Layout Cards (Executive Row Dedicated) ──────────────────────────────────
 function buildLayoutCards() {
   const grid = document.getElementById('layoutGrid');
+  if (!grid) return;
   grid.innerHTML = '';
   LAYOUTS.forEach(l => {
     const btn = document.createElement('button');
-    btn.className = 'layout-card' + (l.id === state.layout ? ' active' : '');
+    btn.type = 'button';
+    btn.className = 'layout-card active';
     btn.id = `lcard-${l.id}`;
     btn.title = l.desc;
     btn.innerHTML = `<div class="layout-thumb">${thumbSvg(l.id, state.color)}</div>
@@ -245,29 +193,33 @@ function buildLayoutCards() {
   });
 }
 
-function selectLayout(id) {
-  state.layout = id;
+function selectLayout(id = 4) {
+  state.layout = 4;
   saveState();
-  document.querySelectorAll('.layout-card').forEach(c => c.classList.remove('active'));
-  const card = document.getElementById(`lcard-${id}`);
+  const card = document.getElementById('lcard-4');
   if (card) card.classList.add('active');
   generatePreview();
 }
 
 // ─── Colors ───────────────────────────────────────────────────────────────────
 function bindColors() {
-  document.querySelectorAll('.swatch[data-color]').forEach(btn => {
-    btn.onclick = () => {
-      document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
-      btn.classList.add('active');
-      applyColor(btn.dataset.color);
-    };
-  });
+  const swatches = document.querySelectorAll('.swatch[data-color]');
+  if (swatches.length) {
+    swatches.forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        applyColor(btn.dataset.color);
+      };
+    });
+  }
   const picker = document.getElementById('customColor');
-  picker.oninput = e => {
-    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
-    applyColor(e.target.value);
-  };
+  if (picker) {
+    picker.oninput = e => {
+      document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+      applyColor(e.target.value);
+    };
+  }
 }
 
 function applyColor(c) {
@@ -651,30 +603,7 @@ function getPhoneLabel(type) {
 }
 
 function setPhoneStyle(style) {
-  state.phoneStyle = style;
-  const btnText = document.getElementById('btnPhoneStyleText');
-  const btnIcon = document.getElementById('btnPhoneStyleIcon');
-  if (btnText && btnIcon) {
-    if (style === 'text') {
-      btnText.classList.add('active');
-      btnText.style.background = 'white';
-      btnText.style.color = 'var(--text-main, #0f172a)';
-      btnText.style.boxShadow = '0 1px 2px rgba(0,0,0,0.08)';
-      btnIcon.classList.remove('active');
-      btnIcon.style.background = 'transparent';
-      btnIcon.style.color = 'var(--text-muted, #64748b)';
-      btnIcon.style.boxShadow = 'none';
-    } else {
-      btnIcon.classList.add('active');
-      btnIcon.style.background = 'white';
-      btnIcon.style.color = 'var(--text-main, #0f172a)';
-      btnIcon.style.boxShadow = '0 1px 2px rgba(0,0,0,0.08)';
-      btnText.classList.remove('active');
-      btnText.style.background = 'transparent';
-      btnText.style.color = 'var(--text-muted, #64748b)';
-      btnText.style.boxShadow = 'none';
-    }
-  }
+  state.phoneStyle = 'icon';
   generatePreview();
 }
 
@@ -684,11 +613,10 @@ function phoneIconHtml(type, color) {
   return ICONS.tel;
 }
 
-// ─── Build phone rows HTML (Short text prefix like T:, P:, M:, E: or Clean Icons) ──
+// ─── Build phone rows HTML (Always Clean Universal Icons) ─────────────────────
 function phoneRowsHtml(linkColor) {
   const rows = state.phones.filter(p => p.number && p.number.trim());
   if (!rows.length) return '';
-  const isText = (state.phoneStyle || 'text') === 'text';
 
   return rows.map(p => {
     const isWa = p.type === 'W' || p.type.toLowerCase().includes('what');
@@ -701,14 +629,8 @@ function phoneRowsHtml(linkColor) {
       href = `mailto:${p.number.trim()}`;
     }
 
-    let prefixTd = '';
-    if (isText) {
-      const label = getPhoneLabel(p.type);
-      prefixTd = `<td style="padding-right:6px;vertical-align:middle;font-size:12.5px;font-weight:700;color:${state.color};font-family:${FONT_STACK};line-height:1.4;white-space:nowrap;">${label}:</td>`;
-    } else {
-      const icon = phoneIconHtml(p.type, linkColor);
-      prefixTd = `<td style="padding-right:6px;vertical-align:middle;line-height:1;">${icon}</td>`;
-    }
+    const icon = phoneIconHtml(p.type, linkColor);
+    const prefixTd = `<td style="padding-right:6px;vertical-align:middle;line-height:1;">${icon}</td>`;
 
     return `
   <tr>
@@ -758,52 +680,7 @@ function updateLogoSize(val) {
   generatePreview();
 }
 
-function bottomLogoHtml(color, forAppleMail = false) {
-  if (!state.showBottomLogo) return '';
 
-  let logoSrc = state.logoUrl;
-  if (!logoSrc || logoSrc.startsWith('data:') || logoSrc.includes('nkLI3bf') || logoSrc.includes('nktJyxt') || logoSrc.includes('removebg') || logoSrc.includes('nkt0ZnS')) {
-    logoSrc = 'https://www.canford.au/wp-content/uploads/2026/10/Canford_logo_Kuubiik_high_resolution_transparent_min_388px.png';
-  }
-
-  const parts = [];
-  const maxW = state.logoSize || 140;
-  const ratio = state.logoRatio || 3.0;
-  const calcH = Math.max(16, Math.round(maxW / ratio));
-
-  if (logoSrc) {
-    const isWhiteBg = state.logoBgStyle === 'white';
-    const imgBg = isWhiteBg ? 'background-color:#ffffff !important;' : '';
-    const imgHtml = `<img src="${logoSrc}" alt="${e(state.company || 'Company')} logo" width="${maxW}" height="${calcH}" border="0" style="display:block;width:${maxW}px;max-width:${maxW}px;height:${calcH}px;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;${imgBg}" />`;
-
-    let imgBlock = imgHtml;
-    if (state.logoBgStyle === 'dark') {
-      imgBlock = `<table cellpadding="0" cellspacing="0" border="0" bgcolor="#0f172a" style="background-color:#0f172a;border-radius:6px;border-collapse:collapse;display:inline-table;"><tr><td bgcolor="#0f172a" align="center" style="background-color:#0f172a;padding:8px 14px;border-radius:6px;line-height:1;text-align:center;">${imgHtml}</td></tr></table>`;
-    } else if (state.logoBgStyle === 'brand') {
-      imgBlock = `<table cellpadding="0" cellspacing="0" border="0" bgcolor="${color}" style="background-color:${color};border-radius:6px;border-collapse:collapse;display:inline-table;"><tr><td bgcolor="${color}" align="center" style="background-color:${color};padding:8px 14px;border-radius:6px;line-height:1;text-align:center;">${imgHtml}</td></tr></table>`;
-    } else if (isWhiteBg) {
-      imgBlock = `<table cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" class="sc-logo-box" style="background-color:#ffffff !important;border:1px solid #e2e8f0;border-radius:8px;border-collapse:collapse;display:inline-table;box-shadow:0 1px 3px rgba(0,0,0,0.06);"><tr><td bgcolor="#ffffff" align="center" style="background-color:#ffffff !important;padding:7px 14px;border-radius:8px;line-height:1;text-align:center;">${imgHtml}</td></tr></table>`;
-    }
-
-    parts.push(`<tr><td style="padding:10px 0 2px;line-height:1;">
-      ${imgBlock}
-    </td></tr>`);
-  } else if (state.company) {
-    parts.push(`<tr><td style="padding:10px 0 2px;font-size:15px;font-weight:700;color:#0f172a;letter-spacing:-0.25px;font-family:${FONT_STACK};">
-      ${e(state.company)}
-    </td></tr>`);
-  }
-
-  if (state.tagline) {
-    parts.push(`<tr><td style="padding:2px 0 2px;font-size:11px;color:#64748b;font-weight:400;letter-spacing:-0.1px;font-family:${FONT_STACK};line-height:1.35;">
-      ${e(state.tagline)}
-    </td></tr>`);
-  }
-
-  if (!parts.length) return '';
-
-  return parts.join('\n');
-}
 
 // Dedicated helper for Layout 4 (right side column logo & tagline)
 function sideLogoHtml(forAppleMail = false) {
@@ -874,10 +751,7 @@ function detailBlock(color) {
   // Email (from dedicated field if not already included in phone rows)
   const emailAlreadyInPhones = state.phones && state.phones.some(p => p.number && (p.type === 'E' || (p.type || '').toUpperCase().includes('EMAIL') || (p.type || '').toUpperCase().includes('MAIL')));
   if (state.email && !emailAlreadyInPhones) {
-    const isText = (state.phoneStyle || 'text') === 'text';
-    const prefixTd = isText
-      ? `<td style="padding-right:6px;vertical-align:middle;font-size:12.5px;font-weight:700;color:${color};font-family:${FONT_STACK};line-height:1.4;white-space:nowrap;">E:</td>`
-      : `<td style="padding-right:6px;vertical-align:middle;line-height:1;">${ICONS.mail}</td>`;
+    const prefixTd = `<td style="padding-right:6px;vertical-align:middle;line-height:1;">${ICONS.mail}</td>`;
 
     parts.push(`<tr><td style="padding:0 0 4px;font-size:12.5px;line-height:1.4;white-space:nowrap;">
       <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
@@ -934,159 +808,32 @@ function nameBlock(nameFontSize = 15) {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-// BUILD SIGNATURE HTML (Premium Modern Email Signatures)
+// BUILD SIGNATURE HTML (Executive Row Layout: Photo Left · Details · Logo Right)
 // ═════════════════════════════════════════════════════════════════════════════
 function buildSig(forExport = false, forAppleMail = false) {
   const c = state.color;
   const db = detailBlock(c);
-  const bLogo = bottomLogoHtml(c, forAppleMail);
-  let html = '';
+  const nb = nameBlock(15);
+  const sLogo = sideLogoHtml(forAppleMail);
 
-  switch (state.layout) {
-
-    // ─── Layout 1: Classic Square – Square Photo Left | Divider | Details ──
-    case 1: {
-      const nb = nameBlock(15);
-      if (state.showPhoto) {
-        const photo = getPhotoImg('square', 68);
-        html = `<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:${FONT_STACK};">
-<tr>
-  <td style="vertical-align:top;padding-right:16px;border-right:1.5px solid #cbd5e1;">
-    ${photo}
-  </td>
-  <td style="vertical-align:top;padding-left:16px;">
-    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:${FONT_STACK};">
-      ${nb}
-      ${db}
-      ${bLogo}
-    </table>
-  </td>
-</tr>
-</table>`;
-      } else {
-        html = `<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:${FONT_STACK};">
-<tr>
-  <td style="vertical-align:top;">
-    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:${FONT_STACK};">
-      ${nb}
-      ${db}
-      ${bLogo}
-    </table>
-  </td>
-</tr>
-</table>`;
-      }
-      break;
-    }
-
-    // ─── Layout 2: Modern Circle – Round Avatar | Divider | Clean Header ───
-    case 2: {
-      const rows = [];
-      if (state.name) {
-        rows.push(`<tr><td style="padding:0 0 2px;font-size:15px;font-weight:700;color:#0f172a;letter-spacing:-0.25px;font-family:${FONT_STACK};line-height:1.25;white-space:nowrap;">${e(state.name)}</td></tr>`);
-      }
-      if (state.title) {
-        rows.push(`<tr><td style="padding:0 0 7px;font-size:12.5px;font-weight:400;color:#475569;letter-spacing:-0.1px;font-family:${FONT_STACK};line-height:1.35;white-space:nowrap;">${e(state.title)}</td></tr>`);
-      }
-      if (state.company && !state.showBottomLogo) {
-        rows.push(`<tr><td style="padding:0 0 6px;font-size:13px;font-weight:600;color:#334155;letter-spacing:-0.2px;font-family:${FONT_STACK};white-space:nowrap;">${e(state.company)}</td></tr>`);
-      }
-      const circleHeader = rows.join('\n');
-
-      if (state.showPhoto) {
-        const photo = getPhotoImg('circle', 68);
-        html = `<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:${FONT_STACK};">
-<tr>
-  <td style="vertical-align:top;padding-right:16px;border-right:1.5px solid #cbd5e1;">
-    ${photo}
-  </td>
-  <td style="vertical-align:top;padding-left:16px;">
-    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:${FONT_STACK};">
-      ${circleHeader}
-      ${db}
-      ${bLogo}
-    </table>
-  </td>
-</tr>
-</table>`;
-      } else {
-        html = `<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:${FONT_STACK};">
-<tr>
-  <td style="vertical-align:top;">
-    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:${FONT_STACK};">
-      ${circleHeader}
-      ${db}
-      ${bLogo}
-    </table>
-  </td>
-</tr>
-</table>`;
-      }
-      break;
-    }
-
-    // ─── Layout 3: Subtle Minimal – Accent Bar | Rounded Photo | Details ───
-    case 3: {
-      const nb = nameBlock(14.5);
-      if (state.showPhoto) {
-        const photo = getPhotoImg('rounded', 68);
-        html = `<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:${FONT_STACK};">
-<tr>
-  <td style="width:3px;background:${c};border-radius:2px;padding:0;line-height:0;font-size:0;">&nbsp;</td>
-  <td style="width:12px;padding:0;line-height:0;font-size:0;">&nbsp;</td>
-  <td style="vertical-align:top;padding-right:14px;border-right:1.5px solid #cbd5e1;">
-    ${photo}
-  </td>
-  <td style="vertical-align:top;padding-left:14px;">
-    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:${FONT_STACK};">
-      ${nb}
-      ${db}
-      ${bLogo}
-    </table>
-  </td>
-</tr>
-</table>`;
-      } else {
-        html = `<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:${FONT_STACK};">
-<tr>
-  <td style="width:3px;background:${c};border-radius:2px;padding:0;line-height:0;font-size:0;">&nbsp;</td>
-  <td style="width:12px;padding:0;line-height:0;font-size:0;">&nbsp;</td>
-  <td style="vertical-align:top;">
-    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:${FONT_STACK};">
-      ${nb}
-      ${db}
-      ${bLogo}
-    </table>
-  </td>
-</tr>
-</table>`;
-      }
-      break;
-    }
-
-    // ─── Layout 4: Executive Row – Image Left | Center Data | Company Logo Right ──
-    case 4: {
-      const nb = nameBlock(15);
-      const sLogo = sideLogoHtml(forAppleMail);
-
-      const photoHtml = state.showPhoto ? `
+  const photoHtml = state.showPhoto ? `
   <td style="vertical-align:middle;padding-right:16px;border-right:1.5px solid #cbd5e1;">
     ${getPhotoImg('circle', 64)}
   </td>` : '';
 
-      const hasLogo = state.showBottomLogo && sLogo;
-      const dividerBorder = hasLogo ? 'border-right:1.5px solid #cbd5e1;' : '';
-      const padLeft = state.showPhoto ? 'padding-left:16px;' : '';
-      const padRight = hasLogo ? 'padding-right:18px;' : '';
+  const hasLogo = state.showBottomLogo && sLogo;
+  const dividerBorder = hasLogo ? 'border-right:1.5px solid #cbd5e1;' : '';
+  const padLeft = state.showPhoto ? 'padding-left:16px;' : '';
+  const padRight = hasLogo ? 'padding-right:18px;' : '';
 
-      const logoHtml = hasLogo ? `
+  const logoHtml = hasLogo ? `
   <td style="vertical-align:middle;padding-left:18px;text-align:center;white-space:nowrap;">
     <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:${FONT_STACK};margin:0 auto;">
       ${sLogo}
     </table>
   </td>` : '';
 
-      html = `<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:${FONT_STACK};">
+  const html = `<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:${FONT_STACK};">
 <tr>
   ${photoHtml}
   <td style="vertical-align:middle;${padLeft}${padRight}${dividerBorder}white-space:nowrap;">
@@ -1098,9 +845,6 @@ function buildSig(forExport = false, forAppleMail = false) {
   ${logoHtml}
 </tr>
 </table>`;
-      break;
-    }
-  }
 
   if (forExport) {
     return `<!-- Email Signature – SignatureCraft -->
